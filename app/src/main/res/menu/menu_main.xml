@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--item's id must be same with fragment's id-->
+    <item
+        android:id="@id/second_fragment"
+        android:title="second" />
+
+</menu>
