@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 
 class SecondFragment : Fragment() {
@@ -22,14 +23,31 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // 1: Bundle 1 - NavController navigate
         btShow.setOnClickListener {
             val phoneNum = etPhone.text.toString()
-            if (phoneNum.isBlank()) {
-                return@setOnClickListener
-            }
 
             val bundle = bundleOf("phoneNum" to phoneNum)
             view.findNavController().navigate(R.id.action_secondFragment_to_thirdFragment2, bundle)
         }
+
+        // 2: Bundle 2 - Navigation createNavigationOncClickListener
+        /*
+        val phoneNum = etPhone.text.toString()
+
+        val bundle = bundleOf("phoneNum" to phoneNum)
+        btShow.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_secondFragment_to_thirdFragment2, bundle))
+        */
+
+        // 3: SafeArgs
+        /*
+        btShow.setOnClickListener {
+            val phoneNum = etPhone.text.toString()
+
+            val action = SecondFragmentDirections.actionSecondFragmentToThirdFragment2(phoneNum)
+            Navigation.findNavController(view).navigate(action)
+        }
+        */
     }
 }

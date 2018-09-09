@@ -19,7 +19,14 @@ class ThirdFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Bundle
+        /*
         val phoneNum = arguments?.getString("phoneNum") ?: "N/A"
         tvPhone.text = phoneNum
+        */
+
+        // SafeArgs
+        val args = ThirdFragmentArgs.fromBundle(arguments)
+        tvPhone.text = args.phoneNum
     }
 }
