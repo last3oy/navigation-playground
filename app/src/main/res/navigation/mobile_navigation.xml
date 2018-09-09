@@ -1,32 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/main_fragment">
 
     <fragment
-        android:id="@+id/mainFragment"
+        android:id="@+id/main_fragment"
         android:name="com.last3oy.navigation.sample.MainFragment"
-        android:label="MainFragment" >
+        android:label="MainFragment">
+
         <action
             android:id="@+id/action_mainFragment_to_secondFragment2"
-            app:destination="@id/secondFragment" />
+            app:destination="@id/second_navigation"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
     </fragment>
-    <fragment
-        android:id="@+id/secondFragment"
-        android:name="com.last3oy.navigation.sample.SecondFragment"
-        android:label="SecondFragment" >
-        <action
-            android:id="@+id/action_secondFragment_to_thirdFragment2"
-            app:destination="@id/thirdFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/thirdFragment"
-        android:name="com.last3oy.navigation.sample.ThirdFragment"
-        android:label="ThirdFragment" >
-        <argument
-            android:name="phoneNum"
-            app:argType="string" />
-    </fragment>
+
+    <!-- <include app:graph="@navigation/included_graph"/> -->
+
+    <navigation
+        android:id="@+id/second_navigation"
+        app:startDestination="@id/second_fragment">
+
+        <fragment
+            android:id="@+id/second_fragment"
+            android:name="com.last3oy.navigation.sample.SecondFragment"
+            android:label="SecondFragment">
+
+            <action
+                android:id="@+id/action_secondFragment_to_thirdFragment2"
+                app:destination="@id/third_fragment" />
+
+        </fragment>
+
+        <fragment
+            android:id="@+id/third_fragment"
+            android:name="com.last3oy.navigation.sample.ThirdFragment"
+            android:label="ThirdFragment">
+
+            <argument
+                android:name="phoneNum"
+                app:argType="string" />
+
+        </fragment>
+
+    </navigation>
+
 </navigation>
